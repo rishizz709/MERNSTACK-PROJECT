@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cast Your Vote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Cast Your Vote</h2>
+
+    <form onsubmit="voteAlert(); return false;">
+        <div class="candidate">
+            <input type="radio" name="candidate" required>
+            <label>Candidate A - Party X</label>
+        </div>
+
+        <div class="candidate">
+            <input type="radio" name="candidate">
+            <label>Candidate B - Party Y</label>
+        </div>
+
+        <div class="candidate">
+            <input type="radio" name="candidate">
+            <label>Candidate C - Party Z</label>
+        </div>
+
+        <button type="submit">Submit Vote</button>
+    </form>
+
+    <a href="index.html">Logout</a>
+</div>
+
+<script>
+function voteAlert() {
+    alert("Your vote has been submitted successfully!");
+}
+</script>
+
+</body>
+</html>

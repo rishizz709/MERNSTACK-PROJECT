@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Online Voting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Dashboard</h2>
+
+    <!-- Add Candidate Section -->
+    <h3>Add Candidate</h3>
+    <input type="text" id="candidateName" placeholder="Candidate Name">
+    <input type="text" id="partyName" placeholder="Party Name">
+    <button onclick="addCandidate()">Add Candidate</button>
+
+    <hr>
+
+    <!-- Update Candidate -->
+    <h3>Update Candidate</h3>
+    <input type="text" id="updateName" placeholder="Candidate Name">
+    <input type="text" id="newParty" placeholder="New Party Name">
+    <button onclick="updateCandidate()">Update Candidate</button>
+
+    <hr>
+
+    <!-- Delete Candidate -->
+    <h3>Delete Candidate</h3>
+    <input type="text" id="deleteName" placeholder="Candidate Name">
+    <button onclick="deleteCandidate()">Delete Candidate</button>
+
+    <hr>
+
+    <!-- View Vote Count -->
+    <h3>View Vote Count</h3>
+    <button onclick="viewVotes()">Show Vote Count</button>
+
+    <p id="voteResult"></p>
+
+    <br>
+    <a href="index.html">⬅ Logout</a>
+
+</div>
+
+<script>
+
+let voteData = {
+    "John": 5,
+    "Ravi": 3,
+    "Anita": 7
+};
+
+function addCandidate() {
+
+    let name = document.getElementById("candidateName").value;
+
+    if(name === "") {
+        alert("⚠ Please enter candidate name!");
+        return;
+    }
+
+    voteData[name] = 0;
+    alert("✅ Candidate Added Successfully!");
+}
+
+function updateCandidate() {
+
+    let name = document.getElementById("updateName").value;
+    let newParty = document.getElementById("newParty").value;
+
+    if(name === "" || newParty === "") {
+        alert("⚠ Please fill all fields!");
+        return;
+    }
+
+    alert("✅ Candidate Updated Successfully!");
+}
+
+function deleteCandidate() {
+
+    let name = document.getElementById("deleteName").value;
+
+    if(voteData[name]) {
+        delete voteData[name];
+        alert("🗑 Candidate Deleted Successfully!");
+    } else {
+        alert("❌ Candidate Not Found!");
+    }
+}
+
+function viewVotes() {
+
+    let result = "";
+
+    for(let candidate in voteData) {
+        result += candidate + " : " + voteData[candidate] + " votes <br>";
+    }
+
+    document.getElementById("voteResult").innerHTML = result;
+    alert("📊 Vote Count Displayed Successfully!");
+}
+
+</script>
+
+</body>
+</html>

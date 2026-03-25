@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Authentication Module</h2>
+
+    <form onsubmit="return adminLogin()">
+
+        <label>Admin Username</label>
+        <input type="text" id="loginUsername" placeholder="Enter Admin Username">
+
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter Password">
+
+        <button type="submit">Login</button>
+
+        <br><br>
+        <button type="button" onclick="goHome()">Back to Home</button>
+
+    </form>
+</div>
+
+<script>
+
+function adminLogin() {
+
+    let username = document.getElementById("loginUsername").value;
+    let password = document.getElementById("loginPassword").value;
+
+    // Check Empty Fields
+    if(username === "" || password === "") {
+        alert("⚠ Please enter both Username and Password!");
+        return false;
+    }
+
+    // Get Stored Admin Credentials
+    let storedUsername = localStorage.getItem("adminUsername");
+    let storedPassword = localStorage.getItem("adminPassword");
+
+    // If Admin Not Registered
+    if(!storedUsername || !storedPassword) {
+        alert("❌ No Admin Registered! Please Register First.");
+        window.location.href = "admin-register.html";
+        return false;
+    }
+
+    // Validate Credentials
+    if(username === storedUsername && password === storedPassword) {
+        alert("✅ Admin Login Successful!");
+        window.location.href = "admin-dashboard.html";
+        return false;
+    } else {
+        alert("❌ Invalid Admin Credentials!");
+        return false;
+    }
+}
+
+// Back to Home
+function goHome() {
+    alert("🏠 Returning to Home Page...");
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

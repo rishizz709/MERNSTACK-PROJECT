@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Registration</h2>
+
+    <form onsubmit="return adminRegister()">
+
+        <label>Admin Username</label>
+        <input type="text" id="regUsername" required>
+
+        <label>Password</label>
+        <input type="password" id="regPassword" required>
+
+        <button type="submit">Register</button>
+
+        <br><br>
+        <a href="index.html">⬅ Back to Home</a>
+
+    </form>
+</div>
+
+<script>
+function adminRegister() {
+
+    let username = document.getElementById("regUsername").value;
+    let password = document.getElementById("regPassword").value;
+
+    if(username === "" || password === "") {
+        alert("⚠ Please fill all fields!");
+        return false;
+    }
+
+    // Save Admin in localStorage
+    localStorage.setItem("adminUsername", username);
+    localStorage.setItem("adminPassword", password);
+
+    alert("✅ Admin Registered Successfully!");
+    window.location.href = "admin.html";
+
+    return false;
+}
+</script>
+
+</body>
+</html>
